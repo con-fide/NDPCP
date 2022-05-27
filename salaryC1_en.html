@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src="../node_modules/bootstrap/dist/js/" </script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+
+  <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+  </symbol>
+</svg>
+
+<main>
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1700px; padding: 0px 50px; text-align:left;">
+    <br/>
+    <br/>
+    <span align="center" class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫中心化差分隐私，希望看您是否会改变心意：
+    数据收集者，首先会收集到您的真实数据，并存储在数据库中，当分析人员请求查询用户的统计信息时,数据收集者会将不准确的统计信息发送给分析人员。
+    </span>
+    <br/>
+    <br/>
+    <table border="0" cellpadding="0" cellspacing="0" id="total_table" width="100%">
+            <tr align="center">
+                <td width="33%"><span align="center" class="fs-5 fw-semibold">请输入您的职位和工资信息</span>
+                    <br/>
+                    <br/>
+                    <select class="fs-5 fw-semibold" id="work">
+                        <option value="0">farmer</option>
+                        <option value="1">worker</option>
+                        <option value="2">doctor</option>
+                        <option value="3">teacher</option>
+                    </select>
+                    <select class="fs-5 fw-semibold" id="salary">
+                        <option value="1">less then5000￥</option>
+                        <option value="2">5000-10000￥</option>
+                        <option value="3">10000-20000￥</option>
+                        <option value="4">more than 20000￥</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <button class="fs-5 fw-semibold" id="ud" onclick="update_data()" type="button">确定</button>
+                    <br/>
+                    <b id="up_text"></b>
+                </td>
+                <td width="33%">
+                    <table frame="box" height="80%" id="store_table" width="80%">
+                        <caption style="caption-side: top;text-align: center"><strong>Collector View</strong></caption>
+                        <tr>
+                            <th><strong class="mb-1">Job-Salary</strong></th>
+                            <th><strong class="mb-1">Counting</strong></th>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </td>
+                    </table>
+                </td>
+                <td width="33%">
+                    <table frame="box" height="80%" id="analyze_table" width="80%">
+                        <caption style="caption-side: top;text-align: center"><strong>Analyzer View</strong></caption>
+                        <tr>
+                            <th><strong class="mb-1">job-salary</strong></th>
+                            <th><strong class="mb-1">counting</strong></th>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">farmer more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">worker more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">doctor more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher less then5000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher 5000-10000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher 10000-20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong class="mb-1">teacher more than 20000￥</strong></td>
+                            <td></td>
+                        </tr>
+                        </td>
+                    </table>
+                </td>
+            </tr>
+        </table>
+  </div>
+  <br/>
+  <br/>
+  <a href="http://39.103.140.61/salaryC2.html">下一页</a>
+  <div class="b-example-divider"></div>
+</main>
+
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="sidebars.js"></script>
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+function update_data() {
+    var x = [40, 60, 120, 60, 150, 80, 90, 30, 60, 80, 40, 20, 90, 240, 190, 50];
+    var res_work = work.value;
+    var res_salary= salary.value;
+    var index = res_work*4 + res_salary*1;
+    up_text.style.backgroundColor= "#FFFF66";
+    up_text.innerText = "您已上传真实数据" + work.options[res_work*1].text + "-" + salary.options[res_salary*1 - 1].text + "至数据收集者";
+
+            for (var i = 1; i < store_table.rows.length; i++)
+                if (i == index) {
+                    store_table.rows[i].bgColor = "#FFFF66";
+                    store_table.rows[i].cells[1].innerHTML = x[i - 1] * 1 + 1;
+                    analyze_table.rows[i].bgColor = "#FFFF66";
+                    analyze_table.rows[i].cells[1].innerHTML = store_table.rows[i].cells[1].innerHTML * 1 + Math.ceil(Math.random() * 20 - 10);
+                } else {
+                    store_table.rows[i].bgColor = "#66FF99";
+                    store_table.rows[i].cells[1].innerHTML = x[i - 1] * 1;
+                    analyze_table.rows[i].bgColor = "#66FF99";
+                    analyze_table.rows[i].cells[1].innerHTML = store_table.rows[i].cells[1].innerHTML * 1 + Math.ceil(Math.random() * 20 - 10);
+                }
+}
+
+</script>

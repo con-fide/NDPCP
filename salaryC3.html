@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
+    <meta content="Hugo 0.88.1" name="generator">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src = "../node_modules/bootstrap/dist/js/" </script>
+    <link href="https://getbootstrap.com/docs/5.1/examples/sidebars/" rel="canonical">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"
+         style="width:1500px; height: 1000px; overflow-y:scroll;padding: 0px 50px; text-align:left;">
+        <br/>
+        <span class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫中心化差分隐私，希望看您是否会改变心意：
+            数据收集者，首先会收集到您的真实数据，并存储在数据库中，当分析人员请求查询用户的统计信息时,数据收集者会将不准确的统计信息发送给分析人员。
+        </span>
+        <br/>
+        <span align="center" class="fs-5 fw-semibold">请输入您的职位和工资信息,随后下面的动画将会演示中心化差分隐私中您上传数据以及分析人员查询数据的过程。
+        <br/>
+        <br/>
+        <select class="fs-5 fw-semibold" id="work">
+        <option value="0">农民</option>
+        <option value="1">工人</option>
+        <option value="2">医生</option>
+        <option value="3">教师</option>
+        </select>
+        <select class="fs-5 fw-semibold" id="salary">
+        <option value="0">低于5000元</option>
+        <option value="1">5000-10000元</option>
+        <option value="2">10000-20000元</option>
+        <option value="3">高于20000元</option>
+        </select>
+        <br/>
+        <br/>
+        <button class="fs-5 fw-semibold" id="ud" onclick="update_data()" type="button">确定</button>
+      </span>
+        <span align="center" class="fs-5 fw-semibold">
+        <table align="center" width="90%">
+            <tr>
+            <td>
+                <table align="right" background="../image/query.png" border="0" height="205px"
+                       id="map_table" rules="all" width="800px">
+                    <tr align="center" height="70%" valign="middle">
+                        <td id="query_text" width="12.5%"></td>
+                    </tr>
+                    <tr align="center" valign="top">
+                        <td id="answer_text" width="12.5%"><b></b></td>
+                    </tr>
+                </table>
+            </td>
+            <td align="left">
+                分析人员
+                <br/>
+                <select class="fs-5 fw-semibold" id="cho_qry" style="width: 200px; opacity: 0" >
+                <option value="0"></option>
+                <option value="1"></option>
+                <option value="2"></option>
+                </select>
+                <button id="ud_cho" onclick="update_query()" type="button" style="opacity: 0">查询</button>
+            </td>
+            </tr>
+        </table>
+        </tr>
+        </table>
+        </span>
+        <table align="center" border="0" frame="box" id="total_table" rules="all" width="80%">
+            <tr align="center">
+                <th>
+        <span align="center" class="fs-5 fw-semibold">
+        <table align="left" border="4" frame="box" id="real_table" rules="all" width="90%">
+          <caption style="caption-side: top; text-align: center">数据收集者储存的真实人数</caption>
+          <tr align="left">
+            <th>查询内容</th> <th>真实人数</th>
+          </tr>
+          <tr align="left">
+            <td></td>
+            <td></td>
+          </tr>
+          <tr align="left">
+            <td></td>
+            <td></td>
+          </tr>
+          <tr align="left">
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        </span>
+                </th>
+                <th>
+        <span align="center" class="fs-5 fw-semibold">
+        <table valign="top" align="right" border="4" frame="box" id="noise_table" rules="all" width="90%">
+          <caption style="caption-side: top; text-align: center">分析人员看到的数据</caption>
+          <tr align="left">
+            <th>查询内容</th> <th>输出人数</th>
+          </tr>
+          <tr align="left">
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        </span>
+                </th>
+            </tr>
+            <tr>
+                <td align="center" id="td_update"></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+    </div>
+    <br/>
+    <br/>
+    <a href="http://39.103.140.61/salary_start.html">返回首页</a>
+</main>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="sidebars.js"></script>
+</body>
+</html>
+
+<!--javascript-->
+<script>
+
+    function update_data() {
+        var x = [40, 60, 120, 60, 150, 80, 90, 30, 60, 80, 40, 20, 90, 240, 190, 50];
+        var res_work = work.value;
+        var res_salary = salary.value;
+
+        real_table.rows[1].cells[0].innerHTML = "<b>" + work.options[(res_work * 1)].text + "—" + salary.options[(res_salary * 1)].text + "</b>";
+        real_table.rows[2].cells[0].innerHTML = "<b>" + work.options[(res_work * 1)].text + "</b>";
+        real_table.rows[3].cells[0].innerHTML = "<b>" + salary.options[(res_salary * 1)].text + "</b>";
+
+        real_table.rows[1].cells[1].innerHTML = "<b>" + (x[res_work * 4 + res_salary * 1]) + "</b>";
+        real_table.rows[2].cells[1].innerHTML = "<b>" + (x[res_work * 4] + x[res_work * 4 + 1] + x[res_work * 4 + 2] + x[res_work * +3]) + "</b>";
+        real_table.rows[3].cells[1].innerHTML = "<b>" + (x[res_salary * 1] + x[res_salary * 1 + 4] + x[res_salary * 1 + 8] + x[res_salary * 1 + 12]) + "</b>";
+
+        setTimeout("up_user()", 1000);
+    }
+
+    function up_user() {
+        real_table.rows[1].cells[1].innerHTML = "<strong style='background-color:#FFFF66'>" + real_table.rows[1].cells[1].innerText * 1 + "</strong>";
+        real_table.rows[2].cells[1].innerHTML = "<strong style='background-color:#FFFF66'>" + real_table.rows[2].cells[1].innerText * 1 + "</strong>";
+        real_table.rows[3].cells[1].innerHTML = "<strong style='background-color:#FFFF66'>" + real_table.rows[3].cells[1].innerText * 1 + "</strong>";
+        td_update.innerHTML = "<b>数据收集者记录您的真实数据</b>"
+        setTimeout("up_user2()", 1000);
+    }
+
+    function up_user2() {
+        real_table.rows[1].cells[1].innerText = real_table.rows[1].cells[1].innerText * 1 + 1;
+        real_table.rows[2].cells[1].innerText = real_table.rows[2].cells[1].innerText * 1 + 1;
+        real_table.rows[3].cells[1].innerText = real_table.rows[3].cells[1].innerText * 1 + 1;
+        td_update.innerHTML = "<b>数据收集者记录您的真实数据</b>"
+        var res_work = work.value;
+        var res_salary = salary.value;
+        cho_qry.options[0].text = work.options[(res_work * 1)].text + "-" + salary.options[(res_salary * 1)].text;
+        cho_qry.options[1].text = work.options[(res_work * 1)].text;
+        cho_qry.options[2].text = salary.options[(res_salary * 1)].text;
+        cho_qry.style.opacity = "1";
+        ud_cho.style.opacity = "1";
+    }
+
+    function update_query(){
+        var cho_value = cho_qry.value;
+        if(cho_value == 0) {
+            noise_table.rows[1].cells[0].innerHTML = "<b>" + real_table.rows[1].cells[0].innerText + "</b>"
+            query_text.innerHTML = "<b>&emsp;&emsp;查询职业是" + real_table.rows[2].cells[0].innerText + "且工资" + real_table.rows[3].cells[0].innerText + "的有多少人</b>"
+        }
+        else if(cho_value == 1) {
+            noise_table.rows[1].cells[0].innerHTML = "<b>" + real_table.rows[2].cells[0].innerText + "</b>"
+            query_text.innerHTML = "<b>&emsp;&emsp;查询职业是" + real_table.rows[2].cells[0].innerText + "的有多少人</b>";
+        }
+        else{
+            noise_table.rows[1].cells[0].innerHTML = "<b>" + real_table.rows[3].cells[0].innerText + "</b>"
+            query_text.innerHTML = "<b>&emsp;&emsp;查询工资" + real_table.rows[3].cells[0].innerText + "的有多少人</b>";
+        }
+
+        ;
+        setTimeout("answer_query()", 1000);
+    }
+
+    function answer_query() {
+        var cho_value = cho_qry.value;
+        answer_text.innerHTML = "<b>返回带有噪音的查询结果</b>"
+        noise_table.rows[1].cells[1].innerText = real_table.rows[cho_value*1+1].cells[1].innerText * 1 + Math.ceil(Math.random() * 20 - 10);
+    }
+</script>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src="../node_modules/bootstrap/dist/js/" </script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <div style="width:1000px; height: 1000px; overflow-y:scroll">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1000px;height: 2000px;padding: 0px 100px; text-align:left;">
+    <br/>
+    <br/>
+    <span class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫中心化差分隐私，希望看您是否会改变心意：
+        数据收集者，首先会收集到您的真实数据，并存储在数据库中，当分析人员请求查询用户的统计信息时,数据收集者会将不准确的统计信息发送给分析人员。
+    </span>
+       <table align="center" frame="box" width="800px" height="405px" id="map_table" background="../image/map.png" border="5" rules="all">
+    <span align="center" class="fs-5 fw-semibold">Please enter your location
+    <select  align="center" style="width:200px" class="fs-5 fw-semibold" id="sel_loc">
+      <option value ="1">广州塔</option>
+      <option value ="2"  selected>Pearl River Park</option>
+      <option value="3">东圃购物中心</option>
+      <option value="4">奥体优托邦</option>
+    </select>
+      <button  onclick="update_data()" id="ud" type="button"  class="fs-5 fw-semibold">Accept</button>
+      <br/>
+      <br/>
+      <p id="txt">数据库中保存的各区域的人数将如下所示</p>
+    </span>
+    <tr align="center">
+      <td width=12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+    <tr align="center">
+      <td width=12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+     <tr align="center">
+       <td width=12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+     <tr align="center">
+       <td width=12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+
+    </table>
+    <br/>
+
+    <br/>
+    <br/>
+    <table align="center" frame="box" width="500px" id="geo_table">
+    <span align="center" class="fs-5 fw-semibold">与您的数据有关的查询的概率分布图</span>
+    <tr align="center">
+    <th width="100%"></th>
+    </tr>
+
+    <tr align="center" valign="top" height="230px">
+        <td id="m1">
+        </td>
+    </tr>
+    <tr align="center" >
+        <td charoff="20">
+        </td>
+    </tr>
+    <tr align="center" >
+        <td>
+
+        </td>
+    </tr>
+    </td>
+    </table>
+  </div>
+  </div>
+  <br/>
+  <br/>
+  <a href="http://39.103.140.61/geoC3.html">下一页</a>
+
+</main>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="sidebars.js"></script>
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+function update_data() {
+
+    var x=[40,60,120,60,150,80,90,30,60,80,40,20,90,240,190,50,70,95,160,320,254,130,90,55,70,95,150,65,240,130,80,65];
+
+    if (sel_loc.value == "1"){
+      var xaxis = 0;
+      var yaxis = 260;
+  }
+  else if  (sel_loc.value == "2"){
+      var xaxis = 110;
+      var yaxis = 140;
+  }
+  else if  (sel_loc.value == "3"){
+      var xaxis = 572;
+      var yaxis = 138;
+  }
+  else if  (sel_loc.value == "4"){
+      var xaxis = 668;
+      var yaxis = 52;
+  }
+
+  var res_x = Math.floor(xaxis/100) ;
+  var res_y= Math.floor(yaxis/100);
+  for(var i = 0; i < map_table.rows.length; i++)
+      for(var j =0; j < map_table.rows[0].cells.length; j++) {
+         if(i == res_y && j == res_x) {
+           map_table.rows[i].cells[j].innerText = x[i*8+j] + 1;
+           map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#FFFF66'>" + map_table.rows[i].cells[j].innerText  + "</b>";
+         }
+         else map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#66FF99'>" + x[i*8+j] + "</b>";
+      }
+
+    geo_table.rows[1].cells[0].style.backgroundImage = "url('../image/pro_dis_en.png')";
+    m1.innerHTML = "<b> <br/><br/>" + (x[res_y*8 + res_x*1]  + 1) + "</b>";
+
+    geo_table.rows[2].cells[0].innerHTML = "<b> &emsp;" + (x[res_y*8 + res_x*1]  + 1 - 20) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_y*8 + res_x*1] + 1 ) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_y*8 + res_x*1] + 21) + "</b>";
+    geo_table.rows[3].cells[0].innerHTML = "<b>The count in the " + sel_loc.options[sel_loc.value*1-1].text +"</b>";
+
+}
+
+</script>

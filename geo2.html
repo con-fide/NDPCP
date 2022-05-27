@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
+    <meta content="Hugo 0.88.1" name="generator">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src = "../node_modules/bootstrap/dist/js/" </script>
+    <link href="https://getbootstrap.com/docs/5.1/examples/sidebars/" rel="canonical">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1000px;padding: 0px 100px; text-align:left;">
+        <br/>
+        <br/>
+        <span class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫本地化差分隐私，希望看您是否会改变心意：
+            数据收集者将会通过本地化差分隐私收集一些用户的地理位置信息，其中您的地理位置信息会经过本地化差分隐私机制发送给数据收集者。
+        </span>
+        <br/>
+        <br/>
+
+        <table align="center" background="../image/map.png" border="5" frame="box" height="405" id="map_table"
+               rules="all" width="800">
+    <span align="center" class="fs-5 fw-semibold">请在8km*4km的地图上输入您的位置
+    <select align="center" class="fs-5 fw-semibold" id="sel_loc" style="width:200px">
+      <option value="1">广州塔</option>
+      <option value="2"  selected>珠江公园</option>
+      <option value="3">东圃购物中心</option>
+      <option value="4">奥体优托邦</option>
+    </select>
+      <button class="fs-5 fw-semibold" id="ud" onclick="update_data()" type="button">确定</button>
+      <br/>
+      <br/>
+      <p id="txt"></p>
+    </span>
+
+
+            <tr align="center">
+                <td width=12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+            </tr>
+            <tr align="center">
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+            </tr>
+            <tr align="center">
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+            </tr>
+            <tr align="center">
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+                <td width="12.5%"></td>
+            </tr>
+
+        </table>
+
+    </div>
+    <br/>
+    <br/>
+    <a href="http://39.103.140.61/geo3.html">下一页</a>
+</main>
+
+
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="sidebars.js"></script>
+</body>
+</html>
+
+<!--javascript-->
+<script>
+
+    function update_data() {
+        if (sel_loc.value == "1") {
+            var xaxis = 0;
+            var yaxis = 260;
+        } else if (sel_loc.value == "2") {
+            var xaxis = 110;
+            var yaxis = 140;
+        } else if (sel_loc.value == "3") {
+            var xaxis = 572;
+            var yaxis = 138;
+        } else if (sel_loc.value == "4") {
+            var xaxis = 668;
+            var yaxis = 52;
+        }
+        var res_x = Math.floor(xaxis / 100);
+        var res_y = Math.floor(yaxis / 100);
+        txt.innerHTML = "You will upload a location according to the probability in the following map";
+        for (var i = 0; i < map_table.rows.length; i++)
+            for (var j = 0; j < map_table.rows[0].cells.length; j++) {
+                if (i == res_y && j == res_x)
+                    map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#FFFF66'>22.5%</b>";
+                else map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#66FF99'>2.5%</b>";
+            }
+    }
+
+</script>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Cover Template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../node_modules/jquery/dist/jquery.min.js" rel="stylesheet"> -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
+  <main class="px-3">
+    <h1>基于差分隐私的工资信息分享案例</h1>
+    <p class="lead">亲爱的朋友，我们想请求您与《收入公平研究基金会》分享您的工资信息。您的数据将帮助我们研究工资不平等的社会科学问题。您的数据将受到差分隐私的保护。差分隐私是数据隐私和保护的黄金标准，被广泛认为是最强有力的隐私保障。若您有疑虑，请选择以下符合您想法的疑虑项（可多选）。我们将竭力消除您对数据隐私侵犯的顾虑。</p>
+    <p class="lead">
+<!--      <button onclick="LearnMoreFunc()" id="lm" type="button" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</button> -->
+    <div class="row">
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心真实数据会被黑客获取到</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心真实数据会被政府强制获得</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心收集数据的组织会将您的真实数据泄露给其他人</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心收集数据的组织中无关的人员会窃取您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心收集数据的组织生成的图表会揭露您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心收集数据的组织中相关的数据分析人员能得到您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light" value="0">担心收集数据的组织将处理后的数据分享给其他人时会泄露您的真实数据</button></div>
+        <div class="col-xs-12 col-xl-12 item mt-3"><button onclick="Submit()" class="btn btn-primary">多选完成并提交</button></div>
+    </div>
+    </p>
+    <p class="text-center" id="explanation"></p>
+    <p class="text-center" id="link"></p>
+
+  </main>
+
+  <footer class="mt-auto text-white-50">
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+const collection = document.getElementsByClassName("btn btn-light");
+
+for (let i = 0; i < collection.length; i++) {
+  collection[i].addEventListener('click', function onClick() {
+  if(collection[i].value == "0"){
+  collection[i].style.backgroundColor = 'salmon';
+  collection[i].style.color = 'white';
+  collection[i].value = "1";
+  } else {
+  collection[i].style.backgroundColor = 'white';
+  collection[i].style.color = 'black';
+  collection[i].value = "0";
+  }
+});
+}
+
+function Submit(){
+var needLDP = false;
+for (let i = 0; i < 4; i++) {
+    if(collection[i].value == "1")
+{
+    needLDP = true;
+    <!--Local DP Only-->
+    document.getElementById("explanation").innerHTML = "我们建议您使用本地化差分隐私机制来保护您的隐私数据。本地化差分隐私机制会在上传数据时向您的真实数据中添加一些错误信息，以保证除您以外的任何人都无法准确判断您的真实数据是什么。<br>我们还为您准备了本地化差分隐私机制的展示，希望能更好地帮助到您理解它是如何保护您的数据的。";
+    document.getElementById("link").innerHTML = '<a href="' + 'salary1.html' +'">'+ '第一种展示方法' +'</a><br>' + 
+                                                '<a href="' + 'salary2.html' +'">'+ '第二种展示方法' +'</a><br>' +
+                                                '<a href="' + 'salary3.html' +'">'+ '第三种展示方法' +'</a><br>' +
+                                                '<a href="' + 'salary4.html' +'">'+ '第四种展示方法' +'</a><br>' ;
+    break;
+}
+if(needLDP == false){
+    <!--Central DP-->
+    explanationText = "我们建议您使用中心化差分隐私机制来保护您的隐私数据。中心化差分隐私机制会要求您上传真实数据，<ul>但保证："
+    if(collection[4].value == "1")
+    {
+        explanationText += "<li>只有经过中心化差分隐私处理后的图表才会被发布</li>";
+    }
+    if(collection[5].value == "1")
+    {
+        explanationText += "<li>数据分析人员无法直接接触到您的数据，而只能查询收集到的数据的统计信息</li>";
+    }
+    if(collection[6].value == "1")
+    {
+        explanationText += "<li>组织外的其他人只能查询收集到的数据的统计信息</li>";
+    }
+    document.getElementById("explanation").innerHTML =  explanationText + "</ul> 中心化差分隐私机制会在统计信息上加入一些错误信息，以保证人们无法准确推断出您的真实数据。<br>我们还为您准备了中心化差分隐私机制的展示，希望能更好地帮助到您理解它是如何保护您的数据的。";
+    document.getElementById("link").innerHTML = '<a href="' + 'salaryC1.html' +'">'+ '第一种展示方法' +'</a><br>' + 
+                                                '<a href="' + 'salaryC2.html' +'">'+ '第二种展示方法' +'</a><br>' +
+                                                '<a href="' + 'salaryC3.html' +'">'+ '第三种展示方法' +'</a><br>';
+}
+}
+}
+</script>

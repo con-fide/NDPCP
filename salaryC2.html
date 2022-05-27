@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src="../node_modules/bootstrap/dist/js/" </script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1700px;height: 2000px;padding: 0px 50px; text-align:left;">
+    <br/>
+    <br/>
+    <span class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫中心化差分隐私，希望看您是否会改变心意：
+    数据收集者，首先会收集到您的真实数据，并存储在数据库中，当分析人员请求查询用户的统计信息时,数据收集者会将不准确的统计信息发送给分析人员。
+    </span>
+    <span align="center" class="fs-5 fw-semibold">请输入您的职位和工资信息
+        <br/>
+        <br/>
+        <select class="fs-5 fw-semibold" id="work">
+        <option value ="0">农民</option>
+        <option value ="1">工人</option>
+        <option value="2">医生</option>
+        <option value="3">教师</option>
+        </select>
+        <select class="fs-5 fw-semibold" id="salary">
+        <option value ="0">低于5000元</option>
+        <option value ="1">5000-10000元</option>
+        <option value="2">10000-20000元</option>
+        <option value="3">高于20000元</option>
+        </select>
+        <br/>
+        <br/>
+        <button  onclick="update_data()" id="ud" type="button"  class="fs-5 fw-semibold">确定</button>
+      </span>
+    <br/>
+    <br/>
+    <table align="center" frame="box" width="90%" id="salary_table">
+    <span align="center" class="fs-5 fw-semibold">与您的数据有关的查询的概率分布图</span>
+    <tr align="center">
+    <th width="33%"></th>
+    <th width="33%"></th>
+    <th width="33%"></th>
+    </tr>
+
+    <tr align="center" height="230px" valign="top">
+        <td id="m1">
+
+        </td>
+        <td id="m2">
+
+        </td>
+       <td id="m3">
+
+       </td>
+    </tr>
+    <tr align="center" >
+        <td charoff="20">
+        </td>
+        <td>
+        </td>
+       <td>
+       </td>
+    </tr>
+    <tr align="center" >
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+       <td>
+
+       </td>
+    </tr>
+    </td>
+    </table>
+  </div>
+    <br/>
+    <br/>
+    <a href="http://39.103.140.61/salaryC3.html">下一页</a>
+</main>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="sidebars.js"></script>
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+function update_data() {
+
+    var x=[40,60,120,60,150,80,90,30,60,80,40,20,90,240,190,50];
+    var res_work = work.value;
+    var res_salary= salary.value;
+
+
+    salary_table.rows[1].cells[0].style.backgroundImage = "url('../image/pro_dis.png')";
+    salary_table.rows[1].cells[1].style.backgroundImage = "url('../image/pro_dis.png')";
+    salary_table.rows[1].cells[2].style.backgroundImage = "url('../image/pro_dis.png')";
+    m1.innerHTML ="<b> <br/><br/>" + x[res_work*4 + res_salary*1] + "</b>";
+    m2.innerHTML ="<b> <br/><br/>" + (x[res_work*4] + x[res_work*4 + 1] + x[res_work*4 + 2] + x[res_work* + 3]) + "</b>";
+    m3.innerHTML ="<b> <br/><br/>" + (x[res_salary*1] + x[res_salary*1 + 4] + x[res_salary*1 + 8] + x[res_salary*1 + 12]) + "</b>";
+
+    salary_table.rows[2].cells[0].innerHTML = "<b> &emsp;" + (x[res_work*4 + res_salary*1] - 20) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_work*4 + res_salary*1]) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_work*4 + res_salary*1] + 20) + "</b>";
+    salary_table.rows[2].cells[1].innerHTML = "<b>" +(x[res_work*4] + x[res_work*4 + 1] + x[res_work*4 + 2] + x[res_work* + 3] -20) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_work*4] + x[res_work*4 + 1] + x[res_work*4 + 2] + x[res_work* + 3]) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_work*4] + x[res_work*4 + 1] + x[res_work*4 + 2] + x[res_work* + 3] + 20) + "</b>";
+    salary_table.rows[2].cells[2].innerHTML = "<b>" + (x[res_salary*1] + x[res_salary*1 + 4] + x[res_salary*1 + 8] + x[res_salary*1 + 12] - 20) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + (x[res_salary*1] + x[res_salary*1 + 4] + x[res_salary*1 + 8] + x[res_salary*1 + 12]) + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" +  (x[res_salary*1] + x[res_salary*1 + 4] + x[res_salary*1 + 8] + x[res_salary*1 + 12] + 20) + "</b>";
+
+    salary_table.rows[3].cells[0].innerHTML = "<b>" + work.options[(res_work*1)].text + "—" + salary.options[(res_salary*1)].text + "的人数</b>";
+    salary_table.rows[3].cells[1].innerHTML = "<b>" + work.options[(res_work*1)].text + "的人数</b>";
+    salary_table.rows[3].cells[2].innerHTML = "<b>" + salary.options[(res_salary*1)].text + "的人数</b>";
+}
+
+</script>

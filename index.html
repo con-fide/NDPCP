@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Cover Template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Cover</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1>Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <button onclick="LearnMoreFunc()" id="lm" type="button" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</button>
+    <div class="row">
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心真实数据会被黑客获取到</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心真实数据会被政府强制获得</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心收集数据的组织会将您的真实数据泄露给其他人</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心收集数据的组织中无关的人员会窃取您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心收集数据的组织生成的图标会揭露您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心收集数据的组织中相关的数据分析人员能得到您的真实数据</button></div>
+        <div class="col-xs-6 col-xl-6 item mt-3"><button class="btn btn-light">担心收集数据的组织将处理后的数据分享给其他人时会泄露您的真实数据</button></div>
+        <div class="col-xs-12 col-xl-12 item mt-3"><button class="btn btn-primary">多选完成并提交</button></div>
+    </div>
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+function LearnMoreFunc() { 
+    console.log("Changed trickered!");
+    document.getElementById("lm").innerText="Changed!";
+}
+
+</script>

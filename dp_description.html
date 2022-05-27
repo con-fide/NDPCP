@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
+    <meta content="Hugo 0.88.1" name="generator">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src = "../node_modules/bootstrap/dist/js/" </script>
+    <link href="https://getbootstrap.com/docs/5.1/examples/sidebars/" rel="canonical">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1600px;">
+        <br/>
+        <br/>
+        <div class="text" style=" text-align:left; padding: 0px 200px;">
+            <span class="fs-5 fw-semibold">
+                根据您的隐私需求，我们会提供两类截然不同的隐私保护方法——本地化差分隐私机制和中心化差分隐私机制——来保护您的个人隐私数据。首先，请您稍微花一些时间来学习这两类隐私保护方法，并通过短时间的学习能够回答
+                我们针对两类隐私方法的区别而提出的问题，以保证您已经掌握关于对本地化差分隐私机制和中心化差分隐私机制的基础知识。
+            </span>
+        </div>
+        <br/>
+        <span align="center" class="fs-5 fw-semibold">请选择您想要了解的差分隐私机制：
+            <select class="fs-5 fw-semibold" id="sel_dp" style="width:200px;">
+                <option value="0">中心化差分隐私</option>
+                <option value="1">本地化差分隐私</option>
+            </select>
+            <button class="fs-5 fw-semibold" id="ud" onclick="cho_dp()" type="button">确定</button>
+            <br/>
+            <br/>
+            <table align="center" id="total_table" width="80%">
+                <tr>
+                    <td align="right" width="50%">
+                        <table align="center" border="0" height="500" id="table_dp" width="630">
+                        </table>
+                    </td>
+                    <td align="left" valign="top" width="50%">
+                    </td>
+                </tr>
+            </table>
+        </span>
+
+    <p>如果您觉得您已经了解了本地化差分隐私和中心化差分隐私各自的特征，您可以点击问卷调查进行测试。</p>
+    <a href="http://39.103.140.61/dp_question.html">问卷调查</a>
+    </div>
+    <br/>
+    <br/>
+</main>
+
+
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="sidebars.js"></script>
+</body>
+</html>
+
+<!--javascript-->
+<script>
+
+    function cho_dp() {
+        var capt = table_dp.createCaption();
+        capt.style.textAlign = "center";
+        if (sel_dp.value == 0) {
+            table_dp.style.backgroundImage = "url('../image/central.png')";
+            capt.innerText = "中心化差分隐私数据收集—发布流程";
+            total_table.rows[0].cells[1].innerHTML = "<b>&emsp;&emsp;统计数据分析的隐私保护</b>：假设存在分析人员需要获取一些用户的<b style='bac" +
+                "kground-color:#FFFF66'>统计信息</b>，比如一个公司中所有员工中有多少人单身等等。为了实现这一目标，我们一般假设，首先有一个<b style='bac" +
+                "kground-color:#FFFF66'>数据收集者</b>需要收集每个用户的信息，并<b style='background-color:#FFFF66'>储存在自己的数据库中</b>。然后，" +
+                "<b style='background-color:#FFFF66'>分析人员通过对数据收集者提出查询请求</b>来获取用户们的统计信息。 为了保护每个用户的隐私，我们会通过一些" +
+                "隐私保护方法来保证分析人员获得的信息是不精确的，从而防止分析人员能准确的推断用户的真实信息是什么。 <br/>&emsp;&emsp;中心化差分隐私：" +
+                "如果您<b style='background-color:#FFFF66'>允许数据收集者获取您的真实信息</b>，我们推荐您使用中心化差分隐私来保护您的数据。中心化差分隐私中，" +
+                "您会将<b style='background-color:#FFFF66'>真实数据</b>分享给数据收集者，随后数据收集者会将所有用户的数据储存在自己的数据库中。当" +
+                "分析人员需要查询用户的统计信息时，数据收集者会根据分析人员的请求从数据库中提取相应的信息并在其中添加一定的<b style='background-color:#FFFF66'>错误信息</b>" +
+                "，随后将不准确的统计结果交给分析人员。中心化差分隐私机制保证<b style='background-color:#FFFF66'>分析人员</b>" +
+                "很难通过不准确的统计结果推理出您的真实信息。"
+        } else {
+            table_dp.style.backgroundImage = "url('../image/local.png')";
+            capt.innerText = "本地化差分隐私数据收集—发布流程";
+            total_table.rows[0].cells[1].innerHTML = "<b>&emsp;&emsp;统计数据分析的隐私保护</b>：假设存在分析人员需要获取一些用户的;<b style='bac" +
+                "kground-color:#FFFF66'>统计信息</b>，比如一个公司中所有员工中有多少人单身等等。为了实现这一目标，我们一般假设，首先有一个<b style='bac" +
+                "kground-color:#FFFF66'>数据收集者</b>需要收集每个用户的信息，并<b style='background-color:#FFFF66'>储存在自己的数据库中</b>。然后，" +
+                "<b style='background-color:#FFFF66'>分析人员通过对数据收集者提出查询请求</b>来获取用户们的统计信息。 为了保护每个用户的隐私，我们会通过一些" +
+                "隐私保护方法来保证分析人员获得的信息是不精确的，从而防止分析人员能准确的推断用户的真实信息是什么。 <br/>&emsp;&emsp;本地化差分隐私：如果您<b style" +
+                "='background-color:#FFFF66'>不允许数据收集者获取您的真实信息</b>，我们推荐您使用本地化差分隐私来保护您的数据。本地化差分隐私中，在您会通过某种隐私" +
+                "保护方法，按照一定的概率将<b style='background-color:#FFFF66'>正确或错误</b>的数据发送给数据收集者，随后数据收集者" +
+                "会将所有用户的数据储存在自己的数据库中。当分析人员需要查询用户的统计信息时，数据收集者会根据分析人员的请求从数据库中提取相应的信息，并<b style='b" +
+                "ackground-color:#FFFF66'>直接发送</b>给分析人员。本地化差分隐私机制保证无论是<b style='background-color:#FFFF66'>数据收集者还是分析人员</b>都无法准确推断您的真实信息。"
+        }
+    }
+
+</script>

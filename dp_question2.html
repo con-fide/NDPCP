@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
+    <meta content="Hugo 0.88.1" name="generator">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src = "../node_modules/bootstrap/dist/js/" </script>
+    <link href="https://getbootstrap.com/docs/5.1/examples/sidebars/" rel="canonical">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <div></div>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1500px; text-align:left; padding: 50px 200px;">
+    <p>
+        <b id="q1">1. 差分隐私机制如何在统计数据数据分析中提供隐私保护？（多选）</b><br/>
+        &emsp;<input type="checkbox" id="q11" >A.单独使用中心化差分隐私机制&emsp;
+        <input type="checkbox" id="q12" >B.先使用中心化差分隐私机制，再使用本地化差分隐私机制
+        <br/>
+        &emsp;<input type="checkbox" id="q13" >C.单独使用本地化差分隐私机制&emsp;
+        <input type="checkbox" id="q14" >D.先使用本地化差分隐私机制，再使用中心化差分隐私机制
+
+        <br/>
+        <br/>
+        <b id="q2">2.在哪类差分隐私保护机制中，您会上传真实数据至数据收集者？</b><br/>
+        &emsp;<input type="radio" id="q21" name="q2">A.中心化差分隐私机制&emsp;
+        <input type="radio" id="q22" name="q2">B.本地化差分隐私机制
+        <br/>
+        &emsp;<input type="radio" id="q23" name="q2">C.都会上传真实数据&emsp;&emsp;
+        <input type="radio" id="q24" name="q2">D.都不会上传真实数据
+
+        <br/>
+        <br/>
+        <b id="q3">3.在哪类差分隐私保护机制中，数据收集者会发送将准确的统计结果发送给分析人员？</b><br/>
+        &emsp;<input type="radio" id="q31" name="q3">A.中心化差分隐私机制&emsp;&emsp;&emsp;
+        <input type="radio" id="q32" name="q3">B.本地化差分隐私机制
+        <br/>
+        &emsp;<input type="radio" id="q33" name="q3">C.都会发送准确的统计结果&emsp;
+        <input type="radio" id="q34" name="q3">D.都不会发送准确的统计结果
+        <br/>
+        <br/>
+        <b id="q4">4.如果您的同事担心收集数据的组织会将他或她的真实数据泄露给他人，您应该推荐他或她选择哪种差分隐私机制？</b><br/>
+        &emsp;<input type="radio" id="q41" name="q4">A.中心化差分隐私机制&emsp;
+        <input type="radio" id="q42" name="q4">B.本地化差分隐私机制&emsp;
+        <br/>
+        &emsp;<input type="radio" id="q43" name="q4">C.两类差分隐私机制都可以
+        <br/>
+        <br/>
+        <b id="q5">5.如果您是数据收集者，已经收集到用户的真实数据，分析人员要查询用户的统计信息时，您可以通过哪类差分隐私机制
+            为每个用户的数据提供隐私保护?</b><br/>
+        &emsp;<input type="radio" id="q51" name="q5">A.中心化差分隐私机制&emsp;
+        <input type="radio" id="q52" name="q5">B.本地化差分隐私机制
+        <br/>
+        &emsp;<input type="radio" id="q53" name="q5">C.两类都可以&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="radio" id="q54" name="q5">D.两类都不可以
+    </p>
+        <button class="fs-5 fw-semibold" id="ud" onclick="submit_dp()" type="button" style="width: 60px">提交</button>
+    </div>
+</main>
+
+
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="sidebars.js"></script>
+</body>
+</html>
+
+<!--javascript-->
+<script>
+function submit_dp(){
+    if(q11.checked == 1 && q12.checked == 0 && q13.checked == 1 && q14.checked == 0){
+        q1.style.color="#33CC00";
+    } else{
+        q1.style.color="#CC0000";
+    }
+    q1.innerText = "1. 差分隐私机制如何在统计数据数据分析中提供隐私保护？（多选）正确答案 A,C  本地化差分隐私与中心化差分隐私不兼容 " +
+        "只会使用其中一种对用户提供隐私保护";
+
+    if(q21.checked == 1)
+        q2.style.color="#33CC00";
+    else q2.style.color="#CC0000";
+    q2.innerText = "2.在哪类差分隐私保护机制中，您会上传真实数据至数据收集者？正确答案 A 使用中心化差分隐私机制时，用户会上传真实数据给数据收集者";
+
+    if(q34.checked == 1)
+        q3.style.color="#33CC00";
+    else q3.style.color="#CC0000";
+    q3.innerText = "3.在哪类差分隐私保护机制中，数据收集者会发送将准确的统计结果发送给分析人员？正确答案 D  在两类差分隐私机制中，" +
+        "分析人员都无法得到准确的统计结果";
+
+    if(q42.checked == 1)
+        q4.style.color="#33CC00";
+    else q4.style.color="#CC0000";
+    q4.innerText = "4.如果您的同事担心收集数据的组织会将他或她的真实数据泄露给他人，您应该推荐他或她选择哪种差分隐私机制？正确答案 B  " +
+        "使用本地化差分隐私，用户有概率会上传虚假数据，因此无论是收集数据的组织还是分析人员都无法准确获取到用户的真实数据";
+
+    if(q51.checked == 1)
+        q5.style.color="#33CC00";
+    else q5.style.color="#CC0000";
+    q5.innerText = "5.如果您是数据收集者，已经收集到用户的真实数据，分析人员要查询用户的统计信息时，您可以通过哪类差分隐私机制"+
+            "为每个用户的数据提供隐私保护? 正确答案 A 数据收集者收集到用户的真实数据，用户已无法在客户端使用本地化差分隐私机制，此时只能" +
+        "用中心化差分隐私机制保护用户数据";
+}
+</script>

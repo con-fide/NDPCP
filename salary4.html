@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src="../node_modules/bootstrap/dist/js/" </script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1000px;">
+    <br/>
+    <br/>
+    <span align="center" class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫本地化差分隐私，希望看您是否会改变心意：
+      数据收集者将会通过本地化差分隐私收集一些用户的职位与工资信息，其中您的职位和工资信息会经过本地化差分隐私机制发送给数据收集者。</span>
+     <br/>
+   <span align="center" class="fs-5 fw-semibold">请输入您的职位和工资信息
+     <br/>
+    <br/>
+    <select  align="center" style="width:200px" class="fs-5 fw-semibold" id="work">
+      <option value ="farmer">farmer</option>
+      <option value ="worker">worker</option>
+      <option value="doctor">doctor</option>
+      <option value="teacher">teacher</option>
+    </select>
+    <select  style="width:200px" class="fs-5 fw-semibold" id="salary">
+      <option value =" less than 5000￥"> less than 5000￥</option>
+      <option value ="5000-10000￥">5000-10000￥</option>
+      <option value="10000-20000￥">10000-20000￥</option>
+      <option value="more than 20000￥">more than 20000￥</option>
+    </select>
+     <button>catch a ball</button>
+    <br/>
+   </span>
+    <br/>
+
+    </p>
+    <table align="center" width="800" border="1" cellspacing="1" cellpadding="1" id="ball_box">
+      <tr align="center">
+       <td width="100%" colspan="2">
+         <strong>小球表示输入对应“职位——工资”的概率，绿色小球表示输出真实数据，黄色小球表示输出非真实数据,隐私算法上传的过程等价于从看不见的盒子中抽取小球的过程</strong>
+         <button  onclick="catch_ball()" id="cb" type="button"  class="fs-7 fw-semibold">抓取小球</button>
+       </td>
+      <tr align="center">
+        <td width="80%"> <img src="../image/ball_box.png" width="600" height="350"></td>
+        <td width="20%"></td>
+      </tr>
+      <tr align="center">
+        <td width="100%" colspan="2"></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <br/>
+  <br/>
+  <a href="http://39.103.140.61/salary_start.html">返回首页</a>
+  <div class="b-example-divider"></div>
+</main>
+
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="sidebars.js"></script>
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+function catch_ball() {
+    var res_work = work.value;
+    var res_salary= salary.value;
+    var text =  res_work + res_salary;
+    cb.innerHTML="重新抓球";
+    if (Math.floor(Math.random()*100)>25)
+    {
+      ball_box.rows[1].cells[0].innerHTML="<img src='../image/ball_box1.png' width='600' height='350'>";
+      var r = Math.floor(Math.random()*100);
+      if(r <= 25) {
+        text = "farmer";
+      }else if( 25<r && r<=50){
+        text = "worker";
+      }else if( 50<r && r<=75){
+        text = "doctor";
+      }
+    else if( 75<r && r<=100){
+        text = "teacher";
+      }
+      r = Math.floor(Math.random()*100);
+      if(r <= 25) {
+        text += " less than 5000￥";
+      }else if( 25<r && r<=50){
+        text += " 5000-10000￥";
+      }else if( 50<r && r<=75){
+        text += " 10000-20000￥";
+      }
+    else if( 75<r && r<=100){
+        text += " more than 20000￥";
+      }
+
+      ball_box.rows[1].cells[1].innerHTML="<img src='../image/hand_y.png' width='80' height='120'><br/>" + "<b>" + text + "</b>";
+      ball_box.rows[2].cells[0].innerHTML="<strong style='background-color:#FFFF66' class='fs-5'>Upload non-real data " + text + "</strong>";
+
+    } else {
+      ball_box.rows[1].cells[0].innerHTML="<img src='../image/ball_box2.png' width='600' height='350'>";
+      ball_box.rows[1].cells[1].innerHTML="<img src='../image/hand_g.png' width='80' height='120'><br/>" +  "<b>" + text + "</b>";
+      ball_box.rows[2].cells[0].innerHTML="<strong style='background-color:#66FF99' class='fs-5'>Upload real data " + text + "</strong>";
+    }
+}
+</script>

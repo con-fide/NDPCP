@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Sidebars · Bootstrap v5.1</title>
+    <script> src="../node_modules/bootstrap/dist/js/" </script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width:1000px; height:2000px;padding: 0px 100px; text-align:left;">
+    <br/>
+    <br/>
+    <span class="fs-5 fw-semibold">我们希望能向您展示一种保护您隐私安全的技术，叫本地化差分隐私，希望看您是否会改变心意：
+      数据收集者将会通过本地化差分隐私收集一些用户的地理位置信息，其中您的地理位置信息会经过本地化差分隐私机制发送给数据收集者。
+    </span>
+    <br/>
+    <br/>
+
+    <table align="center" frame="box" width="800" height="405" id="map_table" background="../image/map.png" border="5" rules="all">
+    <span align="center" class="fs-5 fw-semibold">请在8km*4km的地图上输入您的位置，随后下面的动画将演示本地化差分隐私中您上传数据的隐私保护机制的数据处理过程。
+    <select  align="center" style="width:200px" class="fs-5 fw-semibold" id="sel_loc">
+      <option value ="1">广州塔</option>
+      <option value ="2"  selected>珠江公园</option>
+      <option value="3">东圃购物中心</option>
+      <option value="4">奥体优托邦</option>
+    </select>
+      <button  onclick="update_data()" id="ud" type="button"  class="fs-5 fw-semibold">确定</button>
+      <br/>
+      <br/>
+      <p id="txt"></p>
+    </span>
+
+
+    <tr align="left" valign="top" height = "22.5%">
+    <td width=12.5%"></td>
+    <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+     <tr align="left" valign="top" height = "22.5%">
+    <td width="12.5%"></td>
+    <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+     <tr align="left" valign="top" height = "25%">
+    <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+       <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+     <tr align="left" valign="top" height = "25%">
+    <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+       <td width="12.5%"></td>
+    <td width="12.5%"></td>
+       <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+
+    </table>
+    <!--
+    <span align="center" class="fs-5 fw-semibold">各区域上传数据的概率
+      <button  onclick="update_pro()" id="bu_pro" type="button"  class="fs-5 fw-semibold">查看</button>
+        <br/>
+        按照概率随机选择上传区域
+      <button onclick="choose()" id="bu_cho" type="button"  class="fs-5 fw-semibold">随机选择</button>
+      <br/>
+      查看此次上传位置
+      <button onclick="up_geo()" id="bu_geo" type="button"  class="fs-5 fw-semibold">随机选择</button>
+    </span>
+    -->
+  </div>
+  <br/>
+  <br/>
+  <a href="http://39.103.140.61/geo_start.html">返回首页</a>
+</main>
+
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="sidebars.js"></script>
+  </body>
+</html>
+
+<!--javascript-->
+<script>
+
+function update_data() {
+  if (sel_loc.value == "1"){
+      var xaxis = 0;
+      var yaxis = 260;
+  }
+  else if  (sel_loc.value == "2"){
+      var xaxis = 110;
+      var yaxis = 140;
+  }
+  else if  (sel_loc.value == "3"){
+      var xaxis = 572;
+      var yaxis = 138;
+  }
+  else if  (sel_loc.value == "4"){
+      var xaxis = 668;
+      var yaxis = 52;
+  }
+
+  var res_x = Math.floor(xaxis / 100);
+  var res_y = Math.floor(yaxis / 100);
+
+  txt.innerHTML = "1.您的真实位置如下所示";
+  for (var i = 0; i < map_table.rows.length; i++)
+    for (var j = 0; j < map_table.rows[0].cells.length; j++)
+      map_table.rows[i].cells[j].innerHTML = "";
+
+  var offset_x = xaxis % 100;
+  var offset_y = yaxis % 100;
+  map_table.rows[res_y].cells[res_x].innerHTML = "<img src='../image/ball_r.png' style='position: relative; top:" + offset_y +"px; left:" + offset_x + "px'><b style='position: relative; top:" + offset_y +"px; left:" + offset_x + "px'> <br/><b style='background-color:#FFFF66'>真实位置</b></br>" ;
+  setTimeout("update_pro()", 5000);
+}
+
+function update_pro() {
+  txt.innerHTML = "2.您的位置信息将按照下图所示的概率发送给数据收集者";
+    if (sel_loc.value == "1"){
+      var xaxis = 0;
+      var yaxis = 260;
+  }
+  else if  (sel_loc.value == "2"){
+      var xaxis = 110;
+      var yaxis = 140;
+  }
+  else if  (sel_loc.value == "3"){
+      var xaxis = 572;
+      var yaxis = 138;
+  }
+  else if  (sel_loc.value == "4"){
+      var xaxis = 668;
+      var yaxis = 52;
+  }
+  var res_x = Math.floor(xaxis / 100);
+  var res_y = Math.floor(yaxis / 100);
+  for(var i = 0; i < map_table.rows.length; i++)
+      for(var j =0; j < map_table.rows[0].cells.length; j++) {
+         if(i == res_y && j == res_x) {
+             map_table.rows[i].cells[j].align = "center";
+             map_table.rows[i].cells[j].vAlign = "middle";
+             map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#FFFF66'>22.5%</b>";
+         } else {
+             map_table.rows[i].cells[j].align = "center";
+             map_table.rows[i].cells[j].vAlign = "middle";
+             map_table.rows[i].cells[j].innerHTML = "<b style='background-color:#66FF99'>2.5%</b>";
+         }
+      }
+  setTimeout("choose()", 5000);
+}
+
+function choose() {
+    txt.innerHTML = "3.按照概率选择一个区域";
+    if (sel_loc.value == "1"){
+      var xaxis = 0;
+      var yaxis = 260;
+  }
+  else if  (sel_loc.value == "2"){
+      var xaxis = 110;
+      var yaxis = 140;
+  }
+  else if  (sel_loc.value == "3"){
+      var xaxis = 572;
+      var yaxis = 138;
+  }
+  else if  (sel_loc.value == "4"){
+      var xaxis = 668;
+      var yaxis = 52;
+  }
+  var region_r = Math.floor(Math.random() * 100);
+  var res_x = Math.floor(xaxis/ 100);
+  var res_y = Math.floor(yaxis / 100);
+  for(var i = 0; i < map_table.rows.length; i++)
+      for(var j =0; j < map_table.rows[0].cells.length; j++) {
+          map_table.rows[i].cells[j].bgColor = "";
+          map_table.rows[i].cells[j].innerHTML = "";
+      }
+
+  if (region_r <= 22) {
+      map_table.rows[res_y].cells[res_x].bgColor = "#66FF99";
+      map_table.rows[res_y].cells[res_x].innerHTML = "<b>在此区域随机选择上传位置</b>";
+  } else {
+    var reg_r = Math.floor(Math.random() * 32);
+    var reg_y = Math.floor(reg_r / 8);  // 区域纵坐标
+    var reg_x =reg_r % 8;   // 区域横坐标
+    map_table.rows[reg_y].cells[reg_x].bgColor = "#66FF99";
+    map_table.rows[reg_y].cells[reg_x].innerHTML = "<b>在此区域随机选择上传位置</b>";
+   }
+  setTimeout("up_geo()", 5000);
+}
+
+function up_geo() {
+    txt.innerHTML = "4.在该区域随机选择一个位置上传";
+  if (sel_loc.value == "1"){
+      var xaxis = 0;
+      var yaxis = 260;
+  }
+  else if  (sel_loc.value == "2"){
+      var xaxis = 110;
+      var yaxis = 140;
+  }
+  else if  (sel_loc.value == "3"){
+      var xaxis = 572;
+      var yaxis = 138;
+  }
+  else if  (sel_loc.value == "4"){
+      var xaxis = 668;
+      var yaxis = 52;
+  }
+
+  var res_x = Math.floor(xaxis / 100);
+  var res_y = Math.floor(yaxis / 100);
+  var pos_x=8;
+  var pos_y=8;
+
+
+  for(var i = 0; i < map_table.rows.length; i++)
+      for(var j =0; j < map_table.rows[0].cells.length; j++) {
+          if (map_table.rows[i].cells[j].bgColor == "#66FF99") {
+              pos_x = j;
+              pos_y = i;
+          }
+          map_table.rows[i].cells[j].align = "left";
+          map_table.rows[i].cells[j].vAlign = "top";
+          map_table.rows[i].cells[j].bgColor = "";
+          map_table.rows[i].cells[j].innerHTML = "";
+      }
+  if (pos_x == 8)
+      return 0;
+  var offset_x = xaxis % 100;
+  var offset_y = yaxis % 100;
+
+  map_table.rows[res_y].cells[res_x].innerHTML = "<img src='../image/ball_r.png' style='position: relative; top:" + offset_y +"px; left:" + offset_x + "px'><b style='position: relative; top:" + offset_y +"px; left:" + offset_x + "px'> <br/><b style='background-color:#FFFF66'>Your Position</b></br>" ;
+
+  var x_r = Math.floor(Math.random() * 50);  // x的偏移量
+  var y_r = Math.floor(Math.random() * 50);  // y的偏移量
+
+  if (pos_y == res_y && pos_x == res_x)
+      map_table.rows[pos_y].cells[pos_x].innerHTML = map_table.rows[pos_y].cells[pos_x].innerHTML + "<img src='../image/ball_g.png' style='position: relative; top:" + y_r +"px; left:" + x_r + "px'><b style='position: relative; top:" + y_r +"px; left:" + x_r + "px'> <br/><b style='background-color:#66FF99'>Collect View</b></br>";
+  else map_table.rows[pos_y].cells[pos_x].innerHTML = "<img src='../image/ball_g.png' style='position: relative; top:" + y_r +"px; left:" + x_r + "px'><b style='position: relative; top:" + y_r +"px; left:" + x_r + "px'> <br/><b style='background-color:#66FF99'>Collect View</b></br>";
+}
+</script>
